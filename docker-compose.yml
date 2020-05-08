@@ -7,6 +7,10 @@ services:
       context: .
     volumes:
     - .:/var/www/app
+    environment:
+      APP_ENV: 'dev'
+      APP_DEBUG: 1
+      APP_MY_VAR: ${USER}
 
   web:
     build:
@@ -14,3 +18,5 @@ services:
       context: .
     volumes:
       - .:/var/www/app
+    ports:
+    - 8008:80
