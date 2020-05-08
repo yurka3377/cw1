@@ -12,17 +12,10 @@ use Twig\Error\{LoaderError, RuntimeError, SyntaxError};
  */
 class MainController
 {
-    /**
-     * @var SerializerInterface
-     */
     private SerializerInterface $serializer;
-    /**
-     * @var Environment
-     */
     private Environment $twig;
 
     /**
-     * MainController constructor.
      * @param SerializerInterface $serializer
      * @param Environment $twig
      */
@@ -35,9 +28,7 @@ class MainController
     /**
      * @param Request $request
      * @return Response
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
+     * @throws LoaderError|RuntimeError|SyntaxError
      */
     public function __invoke(Request $request): Response
     {
