@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      dockerfile: docker/php/Dockerfile
+      context: .
+    volumes:
+    - .:/var/www/app
+
+  web:
+    build:
+      dockerfile: docker/nginx/Dockerfile
+      context: .
+    volumes:
+      - .:/var/www/app

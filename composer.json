@@ -1,0 +1,19 @@
+{
+    "name": "creative/docker-lesson",
+    "description": "Lesson content",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrew Zhdanovskih",
+            "email": "azh@crtweb.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4.5",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "symfony/http-foundation": "^5.0"
+    }
+}
