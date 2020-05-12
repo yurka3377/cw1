@@ -1,16 +1,30 @@
 Docker and docker-compose class
 ===============================
 
-> Apart from: Dates and timezones
+Note about working user variables: you should export two variables at host machine — `DUID` (docker user id), variable with your current user ID and `DGID` (docker group id), variable with your current group.
 
-## Docker itself
+These variables are uses for launch php-process in a container.
 
-1. One container — one process
-1. Container environment variables
-1. Build arguments
-1. Container optimization
+For example:    
+```shell script
+export DUID=$(id -u) && export DGID=$(id -g)
+```
 
-## Docker-compose
+## Run project locally
 
-1. One file configures many services
-1. Internal instructions, environments, arguments
+1. Build project: 
+    ```shell script
+    docker-compose build
+    ```
+1. Launch project:
+    ```shell script
+    docker-compose up -d
+    ```
+1. Install packages:
+    ```shell script
+    docker-compose exec app composer install
+    ```
+1. Run tests:
+    ```shell script
+    docker-compose exec app vendor/bin/phpunit
+    ```

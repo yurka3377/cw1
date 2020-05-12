@@ -5,18 +5,20 @@ services:
     build:
       dockerfile: docker/php/Dockerfile
       context: .
+      args:
+        UID: ${DUID}
+        GID: ${DGID}
     volumes:
     - .:/var/www/app
     environment:
       APP_ENV: 'dev'
       APP_DEBUG: 1
-      APP_MY_VAR: ${USER}
 
   web:
     build:
       dockerfile: docker/nginx/Dockerfile
       context: .
     volumes:
-      - .:/var/www/app
+      - ./public:/var/www/app/public
     ports:
     - 8008:80

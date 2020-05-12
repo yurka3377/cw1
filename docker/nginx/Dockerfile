@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:alpine
 
 COPY ./docker/nginx/example.conf /etc/nginx/conf.d/default.conf
 COPY . /var/www/app

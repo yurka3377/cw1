@@ -33,6 +33,7 @@ class MainController
     public function __invoke(Request $request): Response
     {
         $response = new Response();
+        $response->prepare($request);
         $response->setStatusCode(Response::HTTP_OK);
         $response->headers->set('X-Request-Time', \date_create()->format(\DateTime::ATOM));
 
@@ -43,7 +44,7 @@ class MainController
             'server' => $this->serializer->serialize($request->server, 'json', $serializerContext),
             'post' => $this->serializer->serialize($request->request, 'json', $serializerContext),
             'get' => $this->serializer->serialize($request->query, 'json', $serializerContext),
-            'headers' => $this->serializer->serialize($request->headers, 'json', $serializerContext),
+            'headers' => $this->serializer->serialize($response->headers, 'json', $serializerContext),
         ]));
 
         return $response;
