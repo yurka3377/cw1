@@ -12,6 +12,9 @@ use Twig\Error\{LoaderError, RuntimeError, SyntaxError};
  */
 class MainController
 {
+    private const QUOTE = <<<TXT
+TXT;
+
     private SerializerInterface $serializer;
     private Environment $twig;
 
@@ -45,6 +48,7 @@ class MainController
             'post' => $this->serializer->serialize($request->request, 'json', $serializerContext),
             'get' => $this->serializer->serialize($request->query, 'json', $serializerContext),
             'headers' => $this->serializer->serialize($response->headers, 'json', $serializerContext),
+            'quotation' => self::QUOTE,
         ]));
 
         return $response;
